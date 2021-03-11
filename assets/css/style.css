@@ -1,0 +1,28 @@
+:root {
+
+}
+body {
+    font-family: 'Questrial', sans-serif;
+}
+
+header {
+    display: flex;
+}
+h1 {
+    font-family: 'Paytone One', sans-serif;
+
+}
+h2 {
+    font-family: 'Paytone One', sans-serif;
+}
+main {
+    display: flex;
+}
+#todayContainer {
+    justify-content: flex-start;
+    display: flex;
+}
+#futureContainer {
+    justify-content: right;
+    display: flex;
+}
