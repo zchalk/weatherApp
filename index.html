@@ -12,16 +12,20 @@
     <title>weather</title>
   </head>
   <header>
+    <div id= "realHeader">
       <h1>weather</h1>
       <!-- <h2>content generated with OpenWeather.OneCall API</h2> -->
-      <input type="search" placeholder= "Search a city">
-      <button type="submit" id="searchButton"></button>
+      <div id= "inputConatiner">
+        <input type="search" placeholder= "Search a city">
+        <button type="submit" id="searchButton">🔎</button>
+      </div>
+    </div>
       <div id="historyStorage"></div> <!--dynamically generate divs for history-->
   </header>
   <body>
       <main> <!--flex container-->
-        <div id="todayContainer">
-            <div id="todayIconBarrier"></div>
+        <div id="todayIconBarrier">
+            <div id="todayContainer"></div>
         </div> <!--flex container, generate content dynamically from api-->
         <div id="futureContainer"></div> <!--flex container, generate content dynamically from api-->
       </main>

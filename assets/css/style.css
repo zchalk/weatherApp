@@ -7,6 +7,19 @@ body {
 
 header {
     display: flex;
+    flex-direction: column;
+    margin-bottom: 100px;
+}
+#realHeader {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-evenly;
+    width: 100vw;
+}
+#searchButton {
+    border-style: none;
+    background-color: unset;
+
 }
 h1 {
     font-family: 'Paytone One', sans-serif;
@@ -17,6 +30,9 @@ h2 {
 }
 main {
     display: flex;
+}
+#todayIconBarrier {
+    width: 33vw;
 }
 #todayContainer {
     justify-content: flex-start;
