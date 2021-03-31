@@ -8,7 +8,7 @@ body {
 header {
     display: flex;
     flex-direction: column;
-    margin-bottom: 100px;
+    margin: 10vh 0 10vh 0;
 }
 #realHeader {
     display: flex;
@@ -23,6 +23,7 @@ header {
 }
 h1 {
     font-family: 'Paytone One', sans-serif;
+    font-size: xx-large;
 
 }
 h2 {
@@ -33,10 +34,54 @@ main {
 }
 #todayIconBarrier {
     width: 33vw;
+    display: flex;
+    justify-content: flex-start;
 }
 #todayContainer {
     justify-content: flex-start;
     display: flex;
+    flex-direction: column;
+}
+#icon {
+    align-self: center;
+}
+#city {
+margin: 1vw;
+font-size: larger;
+}
+#date {
+    margin: 0 8vw;
+}
+#tempContainer {
+    display: flex;
+    padding: 3vh;
+}
+#temp {
+    margin: 1vh;
+    font-size: x-large;
+    font-weight: bold;
+}
+#tempIcon {
+    height:fit-content;
+}
+ #todayContainer2 > p {
+    width: fit-content;
+    margin: 1vw;
+}
+.low {
+    background-color: rgb(154, 200, 214);
+}
+.moderate {
+    background-color: rgb(150, 202, 120);
+}
+.high {
+    background-color: rgb(253, 253, 148);
+}
+.verHigh {
+    background-color: rgb(248, 164, 85);
+}
+.extreme {
+    background-color: rgb(212, 77, 53);
 }
 #futureContainer {
     justify-content: right;
