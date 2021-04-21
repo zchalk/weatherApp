@@ -11,7 +11,7 @@ var futureContainer = $("#futureContainer");
 
 function getCoords(city) {
     var  coordinateAPIURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey
-    var cityHeader = $('<h3>').attr('id', 'cityHeader').text(city);
+    var cityHeader = $('<h3>').addClass('cityHeader').text(city);
 fetch (coordinateAPIURL)
 .then(function (response) {
     return response.json();
@@ -53,6 +53,7 @@ $("#humidity").text(weatherData.current.humidity + "% humidity");
 $("#windSpeed").text(weatherData.current.wind_speed + "mph");
 $("#UV").text(weatherData.current.uvi);
 $("#icon").attr("src", "http://openweathermap.org/img/wn/" + icon + "@2x.png");
+$("img").show();
 UVindex();
 };
 
@@ -97,12 +98,20 @@ function UVindex() {
     }
 };
 
+function lightDark() {
+    if 
+
+}
+
 $("#searchButton").on("click", function(){
     var cityInput = $("input").val();
-    // search.push(cityInput);
-    // console.log(search);
     getCoords(cityInput);
        
+});
+$("#input").keyup(function(event) {
+    if (event.keyCode === 13) {
+        $("#searchButton").click();
+    }
 }); 
 
 template();

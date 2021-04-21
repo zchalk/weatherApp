@@ -12,30 +12,30 @@
     <link rel="stylesheet" href="assets/css/style.css" />
     <title>weather</title>
   </head>
-  <header>
-    <div id= "realHeader">
-      <h1>weather</h1>
+  <body class="lightmode">
+    <header>
+      <div id= "realHeader">
+        <h1>weather</h1>
       <!-- <h2>content generated with OpenWeather.OneCall API</h2> -->
-      <div id= "inputConatiner">
-        <input type="search" placeholder= "Search a city">
-        <button type="submit" id="searchButton">🔎</button>
+        <div id= "inputConatiner">
+          <input id="input" type="search" placeholder= "Search a city">
+          <button type="submit" id="searchButton">🔎</button>
+        </div>
       </div>
-    </div>
       <div id="historyStorage"></div> <!--dynamically generate divs for history-->
-  </header>
-  <body>
-      <main> <!--flex container-->
-        <div id="todayIconBarrier">
-            <div id="todayContainer">
-              <div id= "todayContainer2"></div>
-            </div>
+    </header>
+    <main> <!--flex container-->
+      <div id="todayIconBarrier">
+          <div id="todayContainer">
+            <div id= "todayContainer2"></div>
+          </div>
            
-        </div> <!--flex container, generate content dynamically from api-->
-        <div id="futureContainer"></div> <!--flex container, generate content dynamically from api-->
-      </main>
-      <footer>
-        <div>Icons made by <a href="https://www.flaticon.com/authors/fjstudio" title="fjstudio">fjstudio</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-      </footer> <!--link to github, portfolio and api-->
+      </div> <!--flex container, generate content dynamically from api-->
+      <div id="futureContainer"></div> <!--flex container, generate content dynamically from api-->
+    </main>
+    <footer>
+      <div>Icons made by <a href="https://www.flaticon.com/authors/fjstudio" title="fjstudio">fjstudio</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+    </footer> <!--link to github, portfolio and api-->
 
     <!-- <script
       type="text/javascript"

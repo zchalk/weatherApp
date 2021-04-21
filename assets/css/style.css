@@ -4,11 +4,19 @@
 body {
     font-family: 'Questrial', sans-serif;
 }
+.lightmode {
+    background-color: rgb(252, 242, 230);
+    color: rgb(21, 26, 92);
+}
+.darkmode {
+    background-color: rgb(8, 39, 51);
+    color: rgb(252, 248, 230);
+}
 
 header {
     display: flex;
     flex-direction: column;
-    margin: 10vh 0 10vh 0;
+    margin: 5vh 0 10vh 0;
 }
 #realHeader {
     display: flex;
@@ -23,14 +31,19 @@ header {
 }
 h1 {
     font-family: 'Paytone One', sans-serif;
-    font-size: xx-large;
-
+    font-size: xxx-large;
 }
-h2 {
-    font-family: 'Paytone One', sans-serif;
+
+#historyStorage {
+    display: flex;
+    margin-top: 5vh;
+}
+.cityHeader {
+    margin: 0 3vw;
 }
 main {
     display: flex;
+    margin-bottom: 50vh;
 }
 #todayIconBarrier {
     width: 33vw;
@@ -46,8 +59,9 @@ main {
     align-self: center;
 }
 #city {
-margin: 1vw;
-font-size: larger;
+    font-family: 'Paytone One', sans-serif;
+    margin: 1vw;
+    font-size: x-large;
 }
 #date {
     margin: 0 8vw;
@@ -63,6 +77,14 @@ font-size: larger;
 }
 #tempIcon {
     height:fit-content;
+}
+#humidityContainer {
+    display: flex;
+    align-items: center;
+}
+#UV {
+    padding: 1vh;
+    width: max-content;
 }
  #todayContainer2 > p {
     width: fit-content;
@@ -82,6 +104,9 @@ font-size: larger;
 }
 .extreme {
     background-color: rgb(212, 77, 53);
+}
+img {
+    display: none;
 }
 #futureContainer {
     justify-content: right;
