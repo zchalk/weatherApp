@@ -58,55 +58,6 @@ $("img").show();
 UVindex();
 };
 
-<<<<<<< HEAD
-function todayTemplate() {
-    var icon = $("<img>").attr("id", "icon");
-    todayIconBarrier.prepend(icon);
-    var city = $("<h2>").attr("id", "city");
-    var date = $("<h3>").attr("id", "date");
-    var tempContainer = $("<div>").attr("id", "tempContainer");
-    todayContainer.prepend(city,date,tempContainer);    
-
-    var temp = $("<p>").attr("id", "temp");
-    var tempIcon = $("<img>").attr({id:"tempIcon", src:"./assets/images/sunnyTemp.png"});
-    tempContainer.prepend(tempIcon,temp);
-
-    var humidityContainer = $("<div>").attr("id", "humidityContainer");
-    var windSpeedContainer = $("<div>").attr("id", "windSpeedContainer");
-    var UVcontainer = $("<div>").attr("id","UVcontainer");
-    todayContainer2.append(humidityContainer,windSpeedContainer,UVcontainer);
-
-    var humidityIcon = $("<img>").attr({id:"humidityIcon", src:"./assets/images/humidity.png"});
-    var humidity = $("<p>").attr("id", "humidity");
-    humidityContainer.append(humidityIcon, humidity);
-
-    var windSpeed = $("<p>").attr("id", "windSpeed");
-    windSpeedContainer.append(windSpeed);
-
-    var UV = $("<p>").attr("id", "UV");
-    UVcontainer.append(UV);
-};
-function futureTemplate(weatherData) {
- for (let i = 0; i < weatherData.daily.length && i < 5; i++) {
-        var futureDayContainer = $("div").addClass("futureDay");
-        futureContainer.prepend(futureDayContainer);
-        var futureDate = $("<h4></h4>").addClass("futureDate");
-        var futureTemp = $("<p>").addClass("futureTemp");
-        var futureIcon = $("<img>").addClass("icon");
-        var futureHumidity = $("<p>").addClass("humidity");
-        futureDayContainer.append(futureDate,futureIcon, futureTemp, futureHumidity);
-        var unixTime = weatherData.daily[i].dt
-        var unixSeconds = new Date(unixTime * 1000);
-        var date = (new Date(unixSeconds).toLocaleDateString("en-US"));
-        var icon = weatherData.daily[i].weather[0].icon;
-        $(".futureDate").text(date);
-        $(".futureIcon").attr("src", "http://openweathermap.org/img/wn/" + icon + "@2x.png");
-        $(".futureTemp").text(weatherData.daily[i].temp.max);
-        $(".futureHumidity").text(weatherData.daily[i].humidity);
-
-
- }
-=======
 // function template() {
 //     var icon = $("<img>").attr("id", "icon");
 //     todayIconBarrier.prepend(icon);
@@ -142,7 +93,6 @@ function futureTemplate(data) {
       var humidity = $("<p>").addClass("futureHumidity").text(data.daily[i].humidity);
       eachFuture.append(date, icon, temp, humidity);
     }
->>>>>>> 186f67087bfcbe32eed8bbde591ee476c5425f82
 }
 
 function UVindex() {
@@ -178,10 +128,5 @@ $("#input").keyup(function(event) {
     }
 }); 
 
-<<<<<<< HEAD
-todayTemplate();
-
-=======
 // template();
 getCoords("Raleigh");
->>>>>>> 186f67087bfcbe32eed8bbde591ee476c5425f82
