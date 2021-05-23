@@ -46,9 +46,13 @@ main {
     margin-bottom: 50vh;
 }
 #todayIconBarrier {
-    width: 33vw;
+    width: 25vw;
     display: flex;
     justify-content: flex-start;
+    border: rgb(21, 26, 92);
+    border-style: double;
+    margin-left: 10vw;
+    background: antiquewhite;
 }
 #todayContainer {
     justify-content: flex-start;
