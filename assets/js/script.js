@@ -8,7 +8,6 @@ var todayContainer = $("#todayContainer");
 var todayContainer2 = $("#todayContainer2");
 var futureContainer = $("#futureContainer");
 
-
 function getCoords(city) {
     var  coordinateAPIURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey
     var cityHeader = $('<h3>').addClass('cityHeader').text(city);
@@ -38,6 +37,7 @@ fetch (oneCallAPIURL)
 .then(function (data) { 
     console.log(data);
     printData(data);
+    futureTemplate(data);
 });
 }
 
@@ -57,33 +57,58 @@ $("img").show();
 UVindex();
 };
 
-function template() {
+function todayTemplate() {
     var icon = $("<img>").attr("id", "icon");
     todayIconBarrier.prepend(icon);
     var city = $("<h2>").attr("id", "city");
     var date = $("<h3>").attr("id", "date");
     var tempContainer = $("<div>").attr("id", "tempContainer");
     todayContainer.prepend(city,date,tempContainer);    
+
     var temp = $("<p>").attr("id", "temp");
     var tempIcon = $("<img>").attr({id:"tempIcon", src:"./assets/images/sunnyTemp.png"});
     tempContainer.prepend(tempIcon,temp);
+
     var humidityContainer = $("<div>").attr("id", "humidityContainer");
     var windSpeedContainer = $("<div>").attr("id", "windSpeedContainer");
     var UVcontainer = $("<div>").attr("id","UVcontainer");
     todayContainer2.append(humidityContainer,windSpeedContainer,UVcontainer);
+
     var humidityIcon = $("<img>").attr({id:"humidityIcon", src:"./assets/images/humidity.png"});
     var humidity = $("<p>").attr("id", "humidity");
     humidityContainer.append(humidityIcon, humidity);
+
     var windSpeed = $("<p>").attr("id", "windSpeed");
     windSpeedContainer.append(windSpeed);
+
     var UV = $("<p>").attr("id", "UV");
     UVcontainer.append(UV);
 };
+function futureTemplate(weatherData) {
+ for (let i = 0; i < weatherData.daily.length && i < 5; i++) {
+        var futureDayContainer = $("div").addClass("futureDay");
+        futureContainer.prepend(futureDayContainer);
+        var futureDate = $("<h4></h4>").addClass("futureDate");
+        var futureTemp = $("<p>").addClass("futureTemp");
+        var futureIcon = $("<img>").addClass("icon");
+        var futureHumidity = $("<p>").addClass("humidity");
+        futureDayContainer.append(futureDate,futureIcon, futureTemp, futureHumidity);
+        var unixTime = weatherData.daily[i].dt
+        var unixSeconds = new Date(unixTime * 1000);
+        var date = (new Date(unixSeconds).toLocaleDateString("en-US"));
+        var icon = weatherData.daily[i].weather[0].icon;
+        $(".futureDate").text(date);
+        $(".futureIcon").attr("src", "http://openweathermap.org/img/wn/" + icon + "@2x.png");
+        $(".futureTemp").text(weatherData.daily[i].temp.max);
+        $(".futureHumidity").text(weatherData.daily[i].humidity);
+
+
+ }
+}
 
 function UVindex() {
     var UV = $('#UV').html();
     let UVelement = $('#UV');
-    console.log(UVelement);
     console.log(UV);
     if (UV < 3) {
         UVelement.addClass('low');
@@ -98,10 +123,10 @@ function UVindex() {
     }
 };
 
-function lightDark() {
-    if 
+// function lightDark() {
+//     if 
 
-}
+// }
 
 $("#searchButton").on("click", function(){
     var cityInput = $("input").val();
@@ -114,5 +139,5 @@ $("#input").keyup(function(event) {
     }
 }); 
 
-template();
+todayTemplate();
 

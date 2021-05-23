@@ -83,8 +83,9 @@ main {
     align-items: center;
 }
 #UV {
-    padding: 1vh;
-    width: max-content;
+    width: fit-content;
+    padding: 0.5vw;
+    border-radius: 4vw;
 }
  #todayContainer2 > p {
     width: fit-content;
