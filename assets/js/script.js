@@ -7,6 +7,7 @@ var todayIconBarrier = $("#todayIconBarrier");
 var todayContainer = $("#todayContainer");
 var todayContainer2 = $("#todayContainer2");
 var futureContainer = $("#futureContainer");
+var weekForecastContainer = [$("#futureContainer").children()]
 
 
 function getCoords(city) {
@@ -38,6 +39,7 @@ fetch (oneCallAPIURL)
 .then(function (data) { 
     console.log(data);
     printData(data);
+    futureTemplate(data);
 });
 }
 
@@ -57,28 +59,42 @@ $("img").show();
 UVindex();
 };
 
-function template() {
-    var icon = $("<img>").attr("id", "icon");
-    todayIconBarrier.prepend(icon);
-    var city = $("<h2>").attr("id", "city");
-    var date = $("<h3>").attr("id", "date");
-    var tempContainer = $("<div>").attr("id", "tempContainer");
-    todayContainer.prepend(city,date,tempContainer);    
-    var temp = $("<p>").attr("id", "temp");
-    var tempIcon = $("<img>").attr({id:"tempIcon", src:"./assets/images/sunnyTemp.png"});
-    tempContainer.prepend(tempIcon,temp);
-    var humidityContainer = $("<div>").attr("id", "humidityContainer");
-    var windSpeedContainer = $("<div>").attr("id", "windSpeedContainer");
-    var UVcontainer = $("<div>").attr("id","UVcontainer");
-    todayContainer2.append(humidityContainer,windSpeedContainer,UVcontainer);
-    var humidityIcon = $("<img>").attr({id:"humidityIcon", src:"./assets/images/humidity.png"});
-    var humidity = $("<p>").attr("id", "humidity");
-    humidityContainer.append(humidityIcon, humidity);
-    var windSpeed = $("<p>").attr("id", "windSpeed");
-    windSpeedContainer.append(windSpeed);
-    var UV = $("<p>").attr("id", "UV");
-    UVcontainer.append(UV);
-};
+// function template() {
+//     var icon = $("<img>").attr("id", "icon");
+//     todayIconBarrier.prepend(icon);
+//     var city = $("<h2>").attr("id", "city");
+//     var date = $("<h3>").attr("id", "date");
+//     var tempContainer = $("<div>").attr("id", "tempContainer");
+//     todayContainer.prepend(city,date,tempContainer);    
+//     var temp = $("<p>").attr("id", "temp");
+//     var tempIcon = $("<img>").attr({id:"tempIcon", src:"./assets/images/sunnyTemp.png"});
+//     tempContainer.prepend(tempIcon,temp);
+//     var humidityContainer = $("<div>").attr("id", "humidityContainer");
+//     var windSpeedContainer = $("<div>").attr("id", "windSpeedContainer");
+//     var UVcontainer = $("<div>").attr("id","UVcontainer");
+//     todayContainer2.append(humidityContainer,windSpeedContainer,UVcontainer);
+//     var humidityIcon = $("<img>").attr({id:"humidityIcon", src:"./assets/images/humidity.png"});
+//     var humidity = $("<p>").attr("id", "humidity");
+//     humidityContainer.append(humidityIcon, humidity);
+//     var windSpeed = $("<p>").attr("id", "windSpeed");
+//     windSpeedContainer.append(windSpeed);
+//     var UV = $("<p>").attr("id", "UV");
+//     UVcontainer.append(UV);
+// };
+function futureTemplate(data) {
+    
+    for (let i = 0; i < weekForecastContainer.length; i++) {
+        for (let i = 0; i < iterable.length; i++) {
+          if (weekForecastContainer)
+        }
+        
+      var date = $("<h3>").addClass("futureDate").text((new Date((data.daily[i].dt*1000)).toLocaleDateString("en-US")));
+      var temp = $("<p>").addClass("futureTemp").text(data.daily[i].temp.max);
+      var icon = $("<img>").addClass("futureIcon").attr("src","http://openweathermap.org/img/wn/" + data.daily[i].weather[0].icon + "@2x.png");
+      var humidity = $("<p>").addClass("futureHumidity").text(data.daily[i].humidity);
+      eachFuture.append(date, icon, temp, humidity);
+    }
+}
 
 function UVindex() {
     var UV = $('#UV').html();
@@ -98,10 +114,10 @@ function UVindex() {
     }
 };
 
-function lightDark() {
-    if 
+// function lightDark() {
+//     if 
 
-}
+// }
 
 $("#searchButton").on("click", function(){
     var cityInput = $("input").val();
@@ -114,5 +130,5 @@ $("#input").keyup(function(event) {
     }
 }); 
 
-template();
-
+// template();
+getCoords("Raleigh");

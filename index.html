@@ -16,7 +16,6 @@
     <header>
       <div id= "realHeader">
         <h1>weather</h1>
-      <!-- <h2>content generated with OpenWeather.OneCall API</h2> -->
         <div id= "inputConatiner">
           <input id="input" type="search" placeholder= "Search a city">
           <button type="submit" id="searchButton">🔎</button>
@@ -26,12 +25,39 @@
     </header>
     <main> <!--flex container-->
       <div id="todayIconBarrier">
+        <img id="icon">
           <div id="todayContainer">
-            <div id= "todayContainer2"></div>
+            <h2 id="city"></h2>
+            <h3 id="date"></h3>
+            <div id="tempContainer">
+              <img id="tempIcon">
+              <p id="temp"></p>
+            </div>
+            <div id= "todayContainer2">
+              <div id="humidityContainer">
+                <img id="humidityIcon">
+                <p id="humidity"></p>
+              </div>
+              <div id="windSpeedContainer">
+                <p id="windSpeed"></p>
+              </div>
+              <div id="UVcontainer">
+                <p id="UV"></p>
+              </div>
+            </div>
           </div>
            
       </div> <!--flex container, generate content dynamically from api-->
-      <div id="futureContainer"></div> <!--flex container, generate content dynamically from api-->
+      <div id="futureContainer">
+        <div id="futureDayZero" data-day="0"></div>
+        <div id="futureDayOne" data-day="1"></div>
+        <div id="futureDayTwo" data-day="2"></div>
+        <div id="futureDayThree" data-day="3"></div>
+        <div id="futureDayFour" data-day="4"></div>
+        <div id="futureDayFive" data-day="5"></div>
+        <div id="futureDaySix" data-day="6"></div>
+        <div id="futureDaySeven" data-day="7"></div>
+      </div> 
     </main>
     <footer>
       <div>Icons made by <a href="https://www.flaticon.com/authors/fjstudio" title="fjstudio">fjstudio</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
