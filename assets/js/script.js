@@ -7,7 +7,8 @@ var todayIconBarrier = $("#todayIconBarrier");
 var todayContainer = $("#todayContainer");
 var todayContainer2 = $("#todayContainer2");
 var futureContainer = $("#futureContainer");
-var weekForecastContainer = [$("#futureContainer").children()]
+var weekForecastContainers = $("#futureContainer").children()
+// console.log(weekForecastContainer.length);
 
 function getCoords(city) {
     var  coordinateAPIURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey
@@ -80,20 +81,17 @@ UVindex();
 //     var UV = $("<p>").attr("id", "UV");
 //     UVcontainer.append(UV);
 // };
-function futureTemplate(data) {
-    
-    for (let i = 0; i < weekForecastContainer.length; i++) {
-        for (let i = 0; i < iterable.length; i++) {
-          if (weekForecastContainer)
-        }
-        
-      var date = $("<h3>").addClass("futureDate").text((new Date((data.daily[i].dt*1000)).toLocaleDateString("en-US")));
-      var temp = $("<p>").addClass("futureTemp").text(data.daily[i].temp.max);
-      var icon = $("<img>").addClass("futureIcon").attr("src","http://openweathermap.org/img/wn/" + data.daily[i].weather[0].icon + "@2x.png");
-      var humidity = $("<p>").addClass("futureHumidity").text(data.daily[i].humidity);
-      eachFuture.append(date, icon, temp, humidity);
-    }
-}
+function futureTemplate(data) {  
+   
+   weekForecastContainers.each(function(i) {
+      var day = i + 1;
+      console.log(data.daily[day]);
+      var date = $("<h3>").addClass("futureDate").text((new Date((data.daily[day].dt*1000)).toLocaleDateString("en-US")));
+      var temp = $("<p>").addClass("futureTemp").text(data.daily[day].temp.max);
+      var icon = $("<img>").addClass("futureIcon").attr("src","http://openweathermap.org/img/wn/" + data.daily[day].weather[0].icon + "@2x.png");
+      var humidity = $("<p>").addClass("futureHumidity").text(data.daily[day].humidity);
+      $(this).append(date, icon, temp, humidity);
+    })};
 
 function UVindex() {
     var UV = $('#UV').html();
