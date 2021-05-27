@@ -4,15 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"/> -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Questrial&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/reset.css"/>
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <link id= "cssLink" rel="stylesheet" href="assets/css/style.css" />
     <title>weather</title>
   </head>
-  <body class="lightmode">
+  <body>
     <header>
       <div id= "realHeader">
         <h1>weather</h1>
@@ -20,12 +18,13 @@
           <input id="input" type="search" placeholder= "Search a city">
           <button type="submit" id="searchButton">🔎</button>
         </div>
+        <button id="lightDark"></button>
       </div>
       <div id="historyStorage"></div> <!--dynamically generate divs for history-->
     </header>
     <main> <!--flex container-->
       <div id="todayIconBarrier">
-        <img id="icon">
+        <img class="icon">
           <div id="todayContainer">
             <h2 id="city"></h2>
             <h3 id="date"></h3>
@@ -49,11 +48,11 @@
            
       </div> <!--flex container, generate content dynamically from api-->
       <div id="futureContainer">
-        <div id="futureDayOne" data-day="1"></div>
-        <div id="futureDayTwo" data-day="2"></div>
-        <div id="futureDayThree" data-day="3"></div>
-        <div id="futureDayFour" data-day="4"></div>
-        <div id="futureDayFive" data-day="5"></div>
+        <div id="futureDayOne" class= "futureDay" data-day="1"></div>
+        <div id="futureDayTwo" class= "futureDay" data-day="2"></div>
+        <div id="futureDayThree" class= "futureDay" data-day="3"></div>
+        <div id="futureDayFour" class= "futureDay" data-day="4"></div>
+        <div id="futureDayFive" class= "futureDay" data-day="5"></div>
       </div> 
     </main>
     <footer>

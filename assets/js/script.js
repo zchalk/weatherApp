@@ -1,6 +1,5 @@
 var apiKey = "f80bb50772c40a878ed5746b10181c83";
 let history = JSON.parse(localStorage.getItem("history")) || [];
-// var search = [];
 var main = $("main");
 var historyStorage = $("#historyStorage");
 var todayIconBarrier = $("#todayIconBarrier");
@@ -8,11 +7,28 @@ var todayContainer = $("#todayContainer");
 var todayContainer2 = $("#todayContainer2");
 var futureContainer = $("#futureContainer");
 var weekForecastContainers = $("#futureContainer").children()
-// console.log(weekForecastContainer.length);
+var day = "assets/css/style.css"
+var night = "assets/css/night.css"
+
+
+const images  = {
+Thunderstorm: {url:"./assets/images/thunderstorm.png"},
+Drizzle: {url:"./assets/images/rain.png"},
+Rain: {url:"./assets/images/rain.png"},
+Snow: {url:"./assets/images/snow.png"},
+Mist: {url:"./assets/images/mist.png"},
+Clear: {url:"./assets/images/sun.png"},
+Clouds: {url:"./assets/images/clouds.png"}
+};
+
 
 function getCoords(city) {
     var  coordinateAPIURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey
-    var cityHeader = $('<h3>').addClass('cityHeader').text(city);
+    var cityHeader = $("<button>").addClass('cityHeader').text(city).on("click", function(){
+        var cityInput = this.innerHTML;
+        console.log(cityInput);
+        getCoords(cityInput);
+    })
 fetch (coordinateAPIURL)
 .then(function (response) {
     return response.json();
@@ -54,7 +70,8 @@ $("#temp").text(weatherData.current.temp + "°");
 $("#humidity").text(weatherData.current.humidity + "% humidity");
 $("#windSpeed").text(weatherData.current.wind_speed + "mph");
 $("#UV").text(weatherData.current.uvi);
-$("#icon").attr("src", "http://openweathermap.org/img/wn/" + icon + "@2x.png");
+$(".icon").attr("src", images[weatherData.current.weather[0].main].url);
+console.log(images[weatherData.current.weather[0].main].url);
 $("img").show();
 UVindex();
 };
@@ -82,15 +99,18 @@ UVindex();
 //     UVcontainer.append(UV);
 // };
 function futureTemplate(data) {  
-   
-   weekForecastContainers.each(function(i) {
+    weekForecastContainers.empty();
+
+    weekForecastContainers.each(function(i) {
+    var options = { weekday: 'long'};
       var day = i + 1;
       console.log(data.daily[day]);
-      var date = $("<h3>").addClass("futureDate").text((new Date((data.daily[day].dt*1000)).toLocaleDateString("en-US")));
-      var temp = $("<p>").addClass("futureTemp").text(data.daily[day].temp.max);
-      var icon = $("<img>").addClass("futureIcon").attr("src","http://openweathermap.org/img/wn/" + data.daily[day].weather[0].icon + "@2x.png");
-      var humidity = $("<p>").addClass("futureHumidity").text(data.daily[day].humidity);
+      var date = $("<h3>").addClass("futureDate").text((new Intl.DateTimeFormat('en-US', options).format(data.daily[day].dt*1000)));
+      var temp = $("<p>").addClass("futureTemp").text(data.daily[day].temp.max + "°");
+      var icon = $("<img>").addClass("futureIcon icon").attr("src", images[data.daily[day].weather[0].main].url);
+      var humidity = $("<p>").addClass("futureHumidity").text(data.daily[day].humidity + "% humidity");
       $(this).append(date, icon, temp, humidity);
+      $(".futureIcon").show();
     })};
 
 function UVindex() {
@@ -110,10 +130,16 @@ function UVindex() {
     }
 };
 
-// function lightDark() {
-//     if 
+$("#lightDark").on("click", function(){
+    console.log($("cssLink").href)
+    if ($("#cssLink").attr('href') == day) {
+    $("#cssLink").attr('href', night)
+    } else {
+    $("#cssLink").attr('href', day)
+    }
+}) 
 
-// }
+
 
 $("#searchButton").on("click", function(){
     var cityInput = $("input").val();
@@ -126,5 +152,10 @@ $("#input").keyup(function(event) {
     }
 }); 
 
-// template();
+$(".cityHeader").on("click", function(){
+    var cityInput = this.text;
+    console.log(this);
+    getCoords(cityInput);
+})
+
 getCoords("Raleigh");
