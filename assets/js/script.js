@@ -1,5 +1,6 @@
 var apiKey = "f80bb50772c40a878ed5746b10181c83";
 let history = JSON.parse(localStorage.getItem("history")) || [];
+var sessionHistory = [];
 var main = $("main");
 var historyStorage = $("#historyStorage");
 var todayIconBarrier = $("#todayIconBarrier");
@@ -9,6 +10,8 @@ var futureContainer = $("#futureContainer");
 var weekForecastContainers = $("#futureContainer").children()
 var day = "assets/css/style.css"
 var night = "assets/css/night.css"
+
+console.log(history);
 
 
 const images  = {
@@ -24,6 +27,8 @@ Clouds: {url:"./assets/images/clouds.png"}
 
 function getCoords(city) {
     var  coordinateAPIURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey
+    sessionHistory.push(city)
+    window.localStorage.setItem("history", JSON.stringify(sessionHistory))
     var cityHeader = $("<button>").addClass('cityHeader').text(city).on("click", function(){
         var cityInput = this.innerHTML;
         console.log(cityInput);
@@ -137,7 +142,25 @@ $("#lightDark").on("click", function(){
     } else {
     $("#cssLink").attr('href', day)
     }
-}) 
+})
+function onLoad() {
+        history.forEach(i => {
+            var cityHeader = $("<button>").addClass('cityHeader').text(i).on("click", function(){
+                var cityInput = this.innerHTML;
+                console.log(cityInput);
+                getCoords(cityInput);
+            });
+             historyStorage.prepend(cityHeader);
+        })
+    
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  }
+function showPosition(position) {
+getWeather(position.coords.latitude, position.coords.longitude);
+    $("#city").text("Home");
+}
+}
 
 
 
@@ -157,5 +180,9 @@ $(".cityHeader").on("click", function(){
     console.log(this);
     getCoords(cityInput);
 })
+$("#delete").on("click", function(){
+    window.localStorage.clear();
+    window.location.reload();
+})
+onLoad();
 
-getCoords("Raleigh");
